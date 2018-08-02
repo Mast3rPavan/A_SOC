@@ -1,0 +1,193 @@
+<settings>
+	<!-- If you prefer to relocate your local repository to somewhere other 
+		than ~.m2/repository then uncomment the <localrepository/> tag below and 
+		specify your location. -->
+		<localRepository>C:\Users\pt636m\.m2\repository</localRepository>
+	<mirrors>
+		<mirror>
+			<id>nexus</id>
+			<mirrorOf>*,!rim2e,!maven-restlet,!alfresco-proxy,!ssf,!maven-releases,!maven-hazelcast,!essdsdp-3rd-party,!cadi,!cadi-gso,!m2eProcessor,!csi,!snapshots,!releases
+			</mirrorOf>
+			<url>http://mavencentral.it.att.com:8084/nexus/content/groups/att-public-group</url>
+		</mirror>
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>nexus</id>
+			<!-- Enable snapshots for the built in central repo to direct -->
+			<!-- all requests to nexus via the mirror -->
+			<repositories>
+				<repository>
+					<id>central</id>
+					<url>http://central</url>
+					<releases>
+						<enabled>true</enabled>
+						<!-- <updatePolicy>always</updatePolicy> <updatePolicy>never</updatePolicy> 
+							<updatePolicy>daily</updatePolicy> <updatePolicy>interval:in minutes</updatePolicy> -->
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+						<!-- <updatePolicy>always</updatePolicy> <updatePolicy>never</updatePolicy> 
+							<updatePolicy>daily</updatePolicy> <updatePolicy>interval:30</updatePolicy> -->
+					</snapshots>
+				</repository>
+				
+				<repository>
+					<id>camunda-bpm-ee-proxy</id>
+					<url>http://mavencentral.it.att.com:8084/nexus/content/repositories/camunda-bpm-ee-proxy/
+					</url>
+					<releases>
+						<enabled>true</enabled>
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>central</id>
+					<url>http://central</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+
+		<profile>
+			<id>nexus-csi</id>
+			<!-- Enable snapshots for the built in central repo to direct -->
+			<!-- all requests to nexus via the mirror -->
+			<repositories>
+				<repository>
+					<id>csi</id>
+					<url>http://mavencentral.it.att.com:8084/nexus/content/groups/csi
+					</url>
+					<releases>
+						<enabled>true</enabled>
+						<!-- <updatePolicy>always</updatePolicy> <updatePolicy>never</updatePolicy> 
+							<updatePolicy>daily</updatePolicy> <updatePolicy>interval:in minutes</updatePolicy> -->
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+						<!-- <updatePolicy>always</updatePolicy> <updatePolicy>never</updatePolicy> 
+							<updatePolicy>daily</updatePolicy> <updatePolicy>interval:30</updatePolicy> -->
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>csi</id>
+					<url>http://mavencentral.it.att.com:8084/nexus/content/groups/csi
+					</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+
+			</pluginRepositories>
+		</profile>
+		<profile>
+			<id>nexus-cloud-dev</id>
+			<!-- Enable snapshots for the built in central repo to direct -->
+			<!-- all requests to nexus via the mirror -->
+			<repositories>
+				<repository>
+					<id>cloud-dev</id>
+					<url>http://mavencentral.it.att.com:8084/nexus/content/groups/cloud-dev
+					</url>
+					<releases>
+						<enabled>true</enabled>
+						<!-- <updatePolicy>always</updatePolicy> <updatePolicy>never</updatePolicy> 
+							<updatePolicy>daily</updatePolicy> <updatePolicy>interval:in minutes</updatePolicy> -->
+						<updatePolicy>never</updatePolicy>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+						<updatePolicy>always</updatePolicy>
+						<!-- <updatePolicy>always</updatePolicy> <updatePolicy>never</updatePolicy> 
+							<updatePolicy>daily</updatePolicy> <updatePolicy>interval:30</updatePolicy> -->
+					</snapshots>
+				</repository>
+			</repositories>
+			<pluginRepositories>
+				<pluginRepository>
+					<id>cloud-dev</id>
+					<url>http://mavencentral.it.att.com:8084/nexus/content/groups/cloud-dev
+					</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<!-- make the profile active all the time -->
+		<activeProfile>nexus</activeProfile>
+		<activeProfile>nexus-csi</activeProfile>
+	</activeProfiles>
+
+	<pluginGroups>
+		<!-- define the sonatype plugin group, so the nexus plugins will work without 
+			typing the groupId -->
+		<pluginGroup>org.sonatype.plugins</pluginGroup>
+	</pluginGroups>
+	<servers>
+		<server>
+			<id>nexus</id>
+			<username></username>
+			<password></password>
+		</server>
+
+		<server>
+			<id>swm</id>
+			<username></username>
+			<password></password>
+		</server>
+		
+		<server>
+			<id>swm-snapshots</id>
+			<username></username>
+			<password></password>
+		</server>
+
+		<server>
+		 <id>docker-hub</id>
+		 <username></username>
+		 <password></password>
+		 <configuration>
+						<email></email>
+		 </configuration>
+    </server>
+
+	</servers>
+
+
+</settings>
+<!-- For artifact deployment, Maven needs the distributionManagement element 
+	in the pom.xml file. -->
+<!-- NOTE: DO NOT UNCOMMENT / expose the distributionManagement section below 
+	in your settings.xml file. -->
+<!-- <distributionManagement> <repository> <id>nexus</id> <name>swm-releases</name> 
+	<url>http://mavencentral.it.att.com:8084/nexus/content/repositories/swm-releases</url> 
+	</repository> <snapshotRepository> <id>nexus</id> <name>swm-snapshots</name> 
+	<url>http://mavencentral.it.att.com:8084/nexus/content/repositories/swm-snapshots</url> 
+	</snapshotRepository> </distributionManagement> -->

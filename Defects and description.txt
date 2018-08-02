@@ -1,0 +1,38 @@
+554489- Countryfilters, rate1_port3 
+ 
+ 
+1) Select FilterSelect "FUTURE SUBRATE E3_/_T3 PORTS" = N/A, run the filter request. Export the report - In the report name type "Test 1806-1.11, Country Filters, 'FUTURE SUBRATE E3_/_T3 PORTS' = N/A".Delete all but 5 records.Keep the header 
+2) Save the file on your local drive as "393235 original values for TC 1.11" so that you can reset the values later in TC 1.13. 
+3) 1st Record: Change "FUTURE SUBRATE OC3_/_STM1_and_OC12_/_STM4_PORTS" to "Story 393233 TC 1_11"2nd Record: Change "CURRENT FR" to "N/A" or to another value that is different than the original value.3rd Record: Change "FUTURE Active Indicator" = InvalidAdd 2 new combinations of BEID / 1st Service Rule to the end as records 6 and 7. See below for the values to enter. Note the orange cell is deliberately left blank.Save file as a new name.Upload the file. 
+4) After receiving the email:Filter on "FUTURE Active Indicator" = INVALID 
+Select Edit 
+ 
+Observe: 
+ 
+Country Filter-Upload - The Change History and Last Changed by fields are not accurate. 
+ 
+For the Existing record update, the Last Changed by is not changing from Batch to User id. 
+For the New record, the Change History, Last Changed by and Date are empty 
+ 
+ 
+555452 
+ 
+1) Select Filter:Select "FUTURE Currency" = USD, run the filter request. Export the report - In the report name type "Test 1806-1.04, Country Detail, 'FUTURE Currenc' = USD". 
+2) Open the export Delete all but 5 rows (do not delete the header row). 
+ 
+3) Save the export on your local drive as "393235 original values for TC 1.04" so that you can reset the values later in TC 1.13. 
+4) On each of the 5 rows:* Change "FUTURE US FX Rate" to "1000". * Change "FUTURE PDF Template Ref. Number" to "99"* Save the file as "393235 CHANGED values for TC 1.04" on your local drive. 
+5) In the tool, click the Upload button 
+6) Select the file "393235 CHANGED values for TC 1.04", using the browse button.Give it this description: "393235 Test 1806-1.04, testing upload".Click the upload button. 
+7) In Country Detail, select the same filter as above, export the report. Look for the 5 rows that you changed and compare the values with the upload. 
+Observe: 
+ 
+Country Detail_Upload - Change History is blank for the updated records 
+ 
+560201 - Upload screen status is not changing to failure when upload failed due to invalid template used 
+ 
+560246 - 299834b| UAT| SOC Discount Add- There is no field to select 'Future Active Indicator" 
+ 
+560400 - 299834b| UAT| SOC Discount upload successful when last column was removed and same BIED's and discounts were uploaded 
+ 
+560408 - 299834b| UAT| Http failure response for (unknown url): 0 Unknown Error when user tries to export report
